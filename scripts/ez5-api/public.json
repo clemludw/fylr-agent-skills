@@ -1,0 +1,79 @@
+{
+  "_comment": "Plugin-facing members of the ez5 classes behind the globals in globals.md. Only these are written to the reference; everything else is internal. Keys: options (initOpts), methods (prototype), static. Evidence: calls in public fylr plugins and the hooks in extension-points.md.",
+  "AppManager": {
+    "methods": ["registerApp"]
+  },
+  "Asset": {
+    "methods": ["getValue", "getId", "getField", "getWidth", "getHeight", "getStatus"],
+    "static": ["getBestImageForViewport", "getStandardVersion", "getStandardVersionName"]
+  },
+  "EventPoller": {
+    "static": ["saveEvent", "listen"]
+  },
+  "Field": {
+    "methods": [
+      "name", "fullName", "nameLocalized", "fullNameLocalized", "id", "path",
+      "getMask", "getMainMask", "getFatherField", "insideNested", "isTopLevelField", "isSystemField",
+      "checkValue", "isEmpty", "getSaveData", "renderEditorInput", "renderDetailOutput", "renderTableOutput",
+      "renderSearchInput", "getQueryFieldBadge", "getSearchFilter", "renderFieldAsGroup", "getSortFields",
+      "hasRenderForSort"
+    ]
+  },
+  "Localization": {
+    "methods": [
+      "getLanguage", "getDatabaseLanguages", "getBestFrontendValue", "getBestDatabaseValue",
+      "getLanguageControl", "getLanguageControlAdmin", "has"
+    ]
+  },
+  "Mask": {
+    "methods": ["name", "nameLocalized", "id", "getFields", "getFieldsByType", "getTable", "isHierarchy", "hasTags", "getTopLevelObjecttypeName"],
+    "static": ["getMaskByMaskName"]
+  },
+  "Objecttype": {
+    "methods": ["name", "nameLocalized", "id", "getMask", "getTable", "isHierarchy", "isPolyhierarchy", "getAllFields", "hasTags", "poolLink"]
+  },
+  "Objecttypes": {
+    "methods": ["getObjecttypes"]
+  },
+  "Plugin": {
+    "methods": ["getName", "getBaseURL", "getPluginURL", "getOpts", "getInfo", "getWebfrontend"]
+  },
+  "PluginManager": {
+    "methods": ["getPlugin", "getPluginNames"]
+  },
+  "PoolManagerList": {
+    "methods": ["findPoolById", "findPoolByShortname", "getRootPool", "getList"]
+  },
+  "ResultObject": {
+    "methods": [
+      "getData", "getMask", "objecttype", "objecttypeLocalized", "getGlobalObjectId", "getSystemObjectId",
+      "getUuid", "getId", "pool", "hasRight", "getStandard", "version", "isDeleted"
+    ],
+    "static": ["loadFromGlobalObjectId", "loadFromId", "loadFromUUID"]
+  },
+  "RootMenu": {
+    "methods": ["navigateToUrl", "getActiveApp"]
+  },
+  "ServerRequest": {
+    "options": ["type", "api", "json_data", "data", "body", "headers", "url", "local_url", "timeout", "add_token", "handle_error", "error", "success"],
+    "methods": ["start"]
+  },
+  "ServerRequestApi": {
+    "methods": ["search_no_limit"]
+  },
+  "Session": {
+    "methods": [
+      "getUser", "isAuthenticated", "getGroups", "getGroupIds", "getDisplayName", "getSystemRight", "hasSystemRight",
+      "getBaseConfig", "getPref", "setPref", "savePref", "addCookieOnlyPref", "getLanguage",
+      "getConfigFrontendLanguages", "getConfigDatabaseLanguages", "getInstance", "isDebug", "getCapability"
+    ],
+    "static": ["addToken"]
+  },
+  "ez5": {
+    "static": [
+      "FRONTEND_VERSION", "version", "format_date", "format_date_and_time", "format_number", "format_filesize",
+      "format_seconds", "generateUUID", "copyToClipboard", "download_file", "download_files", "getAbsoluteURL",
+      "basename", "dirname", "extension", "add_ellipsis"
+    ]
+  }
+}

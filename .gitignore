@@ -1,0 +1,5 @@
+# Licensed fylr web frontend bundle: never commit
+easydb5.js
+node_modules/
+apm_modules/
+.tmp/

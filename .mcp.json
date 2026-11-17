@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "fylr-docs": {
+      "type": "http",
+      "url": "https://docs.fylr.io/~gitbook/mcp"
+    }
+  }
+}

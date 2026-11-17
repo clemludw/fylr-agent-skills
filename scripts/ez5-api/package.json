@@ -1,0 +1,12 @@
+{
+  "name": "ez5-api-generator",
+  "private": true,
+  "description": "Generates the ez5 API reference of the fylr-ez5 skill from the fylr web frontend bundle.",
+  "scripts": {
+    "generate": "node generate.js"
+  },
+  "dependencies": {
+    "acorn": "8.14.0",
+    "acorn-walk": "8.3.4"
+  }
+}

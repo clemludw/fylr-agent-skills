@@ -1,0 +1,12 @@
+# Example plugins
+
+Look up the matching place in an example instead of guessing conventions. Never copy an
+example's data model, name or language choice into a new plugin.
+
+| Repository | Good model for | Limits |
+|---|---|---|
+| [fylr-plugin-example](https://github.com/programmfabrik/fylr-plugin-example) | The reference plugin: layout, `manifest.yml`, `build.yml`, build and release with fylr-build-plugin, and most extension points (API extensions, callbacks, web frontend, custom data type, base config, system rights, `fas_config`, localization, Go extension). fylr's apitests run against its current release. | Its custom data type builds DOM with `CUI.dom.element` and `CUI.dom.append`; for new code use templates (`fylr-cui`). |
+| [fylr-plugin-workshop-demo](https://github.com/programmfabrik/fylr-plugin-workshop-demo) | Small, current entry from the fylr plugin workshop: one short example each for an API extension (Node.js), a `db_pre_save` callback, base config, toolbar tool (`CollectionPlugin`), detail sidebar, custom data type and localization, built with fylr-build-plugin. Shows registration timing: custom data types at top level, sidebar and collection plugins in `ez5.session_ready`. | Written for fylr 6.34. The callback expects an objecttype `personen` with a field `name`. No HTML template. |
+| [easydb-example-plugin](https://github.com/programmfabrik/easydb-example-plugin) | Frontend plugins in CoffeeScript with many web frontend extension points in `src/webfrontend`: detail sidebar, editor, export manager, mask splitter, pool and user plugins, tray and root apps, transition actions, custom data type, base config. | Old easydb 5 repository. Only the code in `src/webfrontend` carries over, into a top-level `webfrontend/` folder. Server parts, manifest, Makefile and webpack build are easydb 5 and do not apply to fylr; layout and build come from fylr-plugin-example. |
+| [easydb-example-javascript-plugin](https://github.com/programmfabrik/easydb-example-javascript-plugin) | Frontend classes in JavaScript instead of CoffeeScript. | Builds with webpack and Babel instead of fylr-build-plugin. Assigns variables without `let` or `const`, which fails in the strict mode of class bodies. |
+| [fylr-plugin-sequence](https://github.com/programmfabrik/fylr-plugin-sequence) | Layout of an apitest suite in `apitest/` (`fylr-testing`). | Only the apitest layout is used as a model here. |

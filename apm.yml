@@ -1,0 +1,25 @@
+name: fylr-agents-skills
+version: 0.1.0
+description: "fylr domain knowledge for coding agents: rules and skills to design, implement, test, build and debug fylr plugins from a spec."
+license: MIT
+# Which agent platforms to deploy to.
+# Resolution order: --target flag > this field > auto-detect from filesystem.
+targets:
+- claude
+- copilot
+- codex
+- cursor
+- gemini
+- opencode
+- windsurf
+dependencies:
+  apm: []
+  mcp:
+  - name: fylr-docs
+    registry: false
+    transport: http
+    url: https://docs.fylr.io/~gitbook/mcp
+includes: auto
+devDependencies:
+  apm: []
+scripts: {}
