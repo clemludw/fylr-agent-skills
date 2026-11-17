@@ -80,10 +80,10 @@ The skills are distributed as an [APM](https://github.com/microsoft/apm) package
 in your plugin repository:
 
 ```sh
-apm install clemludw/fylr-agents-skills
+apm install clemludw/fylr-agent-skills
 ```
 
-Pin a version with a Git ref, for example `apm install clemludw/fylr-agents-skills#v0.1.0`. Update
+Pin a version with a Git ref, for example `apm install clemludw/fylr-agent-skills#v0.1.0`. Update
 with `apm update`.
 
 APM places the rule, the skills and the MCP server where each agent expects them, for every agent
