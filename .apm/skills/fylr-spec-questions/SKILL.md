@@ -24,7 +24,7 @@ description: Use when a spec for a fylr plugin or plugin change was written, cha
    | Field | Content |
    |---|---|
    | Plugin name | `plugin.name`, valid per the conventions page, checked against the Disk-to-URL migration list |
-   | Plugin kinds and extension points | frontend, server (extension, callback, recipe), custom data type, base config …, with docs links |
+   | Plugin kinds and extension points | frontend, server (extension, callback, recipe), custom data type, base config, library (`plugin.dependencies`) …, with docs links |
    | Localization source | `central-sheet` (`loca` entry) or `repository-csv` |
    | Target fylr version(s) | for example the oldest and newest version to support |
    | API user | acting user, or plugin user with how it is configured |

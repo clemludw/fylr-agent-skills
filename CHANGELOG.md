@@ -24,5 +24,9 @@ A new version of a generated reference (ez5, golib) is at least a minor release.
   `fylr-custom-data-types`.
 - Skills for build, quality and upkeep: `fylr-build-release`, `fylr-testing`,
   `fylr-debugging`, `fylr-security-review`, `fylr-maintenance`.
+- Library plugins as a plugin kind: shared frontend code that other plugins declare in
+  `plugin.dependencies`, with fylr-plugin-commons-library as the existing base for custom data
+  types (`fylr-plugin-design`, `fylr-spec-questions`, `fylr-custom-data-types`), and the
+  `zip_aliases` pitfall when a repository is renamed (`fylr-build-release`).
 - Reference generators for ez5 and golib under `scripts/` (not shipped).
 - Checks under `scripts/check/`: structure, links and install test.

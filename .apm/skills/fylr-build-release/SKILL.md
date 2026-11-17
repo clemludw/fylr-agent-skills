@@ -55,6 +55,9 @@ description: Use when creating a new fylr plugin repository, naming a plugin, ch
 - Pointing `plugin.paths` at the repository root loads the unbuilt source tree as the plugin;
   fylr does not descend into `build/` below a manifest.
 - Two loaded plugins with the same `plugin.name` stop fylr with an error.
+- Renaming the repository changes the ZIP's asset name, and instances that installed from the old
+  URL silently stop updating (Packaging and Release). Keep publishing the old name with
+  `zip_aliases` in `build.yml` (fylr-build-plugin README, "Historical asset names").
 - easydb 5 build files (Makefile rules, webpack, `manifest.master.yml`) do not apply to fylr.
 - You never install, tag, publish or deploy the plugin; the developer does.
 

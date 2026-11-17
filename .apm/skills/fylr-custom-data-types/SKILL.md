@@ -16,11 +16,14 @@ description: Use when a fylr plugin defines or changes a custom data type - its 
 - [Custom Data](https://docs.fylr.io/for-developers/customdata.md): storage, search mapping, updater, manifest definition. Authoritative for everything except the frontend part.
 - Frontend part: [easydb 5 custom data type docs](https://raw.githubusercontent.com/programmfabrik/easydb-documentation/master/content/technical/plugins/customdatatype/_index.en.md) and the `fylr-ez5` reference ([extension points](../fylr-ez5/references/extension-points.md))
 - Examples: fylr-plugin-workshop-demo and fylr-plugin-example ([example-plugins.md](../fylr-plugin-design/references/example-plugins.md)); for new UI use templates (`fylr-cui`)
+- Shared base for authority-file types: [fylr-plugin-commons-library](https://github.com/programmfabrik/fylr-plugin-commons-library) (CSV import of the field, helpers); its README lists the plugins built on it
 - Plugin user for the updater: [The callback contract](https://docs.fylr.io/for-developers/plugin/callbacks/contract.md)
 
 ## Decisions
 
 - Frontend only, or also a server-side updater that refreshes data from an external source.
+- Build on commons-library or stand alone. An existing plugin that depends on it keeps the
+  dependency; a new authority-file type should use it when it needs CSV import of the field.
 - Which subfields are searchable, with which mapping options, for the target fylr version.
 - The plugin name follows the conventions (`fylr-build-release`); the docs advise starting custom
   data type names with `custom-data-type-`.
@@ -44,6 +47,8 @@ description: Use when a fylr plugin defines or changes a custom data type - its 
   code did not load (`fylr-debugging`, frontend part), not a data model error.
 - Search mapping options depend on the fylr version. Check the target version on the docs page.
 - A scheduled updater runs without an acting user; API calls need a configured plugin user.
+- Code that uses commons-library without `commons-library` in `plugin.dependencies` works only by
+  load-order luck and breaks when the order changes (manifest page, `dependencies`).
 
 ## Verify
 
