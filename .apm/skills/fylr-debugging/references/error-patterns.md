@@ -36,5 +36,8 @@ confirm with the developer's hints before acting on a pattern.
 | `Class constructor … cannot be invoked without 'new'` | CoffeeScript class extends a JavaScript class | `fylr-frontend-plugins` class pitfalls |
 | `(plugin not loaded)` / "Unsupported Column Type" at a custom data type | Frontend code of the custom data type not loaded | Console errors on load; bundle order; registration |
 | `new CUI.Template` throws | Template file not shipped or listed, slot missing or duplicated | `fylr-cui` templating pitfalls |
+| `Cannot use 'import.meta' outside a module` or `Cannot use import statement outside a module` | An ES module loaded as a classic script (`CUI.loadScript`, bundle) | Library format; load with `import()` (`fylr-frontend-plugins`, es-modules-workers-wasm.md) |
+| `Expected a JavaScript module script` | Server sends no JavaScript MIME type for `.mjs` or a module worker | Ship the file as `.js`, adjust URLs the library derives from its file name |
+| CSP violation for a `blob:` worker or WebAssembly | Content Security Policy of the instance (`worker-src`, `wasm-unsafe-eval`) | Instance configuration, not the plugin: hand it to the developer |
 | Change not visible | Old build loaded or browser cache | `plugin.paths` points at `build/`; rebuild; reload without cache |
 | Missing texts show as keys | l10n key missing or CSV not shipped | `fylr-localization` |

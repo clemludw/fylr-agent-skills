@@ -1,6 +1,6 @@
 ---
 name: fylr-frontend-plugins
-description: Use when adding or changing code that runs in the fylr web frontend - plugin JavaScript or CoffeeScript, CSS, HTML templates, webfrontend bundles in build.yml, the plugin bundle (bundle.js) and its loading behavior, choosing CoffeeScript or JavaScript, or adding a third-party frontend library.
+description: Use when adding or changing code that runs in the fylr web frontend - plugin JavaScript or CoffeeScript, CSS, HTML templates, webfrontend bundles in build.yml, the plugin bundle (bundle.js) and its loading behavior, choosing CoffeeScript or JavaScript, or adding a third-party frontend library, including ES-module-only libraries, web workers and WebAssembly.
 ---
 
 # fylr web frontend plugins
@@ -20,6 +20,7 @@ description: Use when adding or changing code that runs in the fylr web frontend
 - Frontend plugin types: [easydb 5 webfrontend plugin docs](https://raw.githubusercontent.com/programmfabrik/easydb-documentation/master/content/technical/plugins/webfrontend/_index.en.md) (frontend only)
 - Examples in both languages: `fylr-plugin-design`, [references/example-plugins.md](../fylr-plugin-design/references/example-plugins.md)
 - [references/loading-dependencies.md](references/loading-dependencies.md): pattern for loading shipped libraries on demand
+- [references/es-modules-workers-wasm.md](references/es-modules-workers-wasm.md): libraries that ship ES modules, CommonJS, web workers or WebAssembly
 
 ## Decisions
 
@@ -37,7 +38,10 @@ description: Use when adding or changing code that runs in the fylr web frontend
     takes the plugin down (before 6.35.1 also every later plugin).
   - `webfrontend.install`: larger libraries shipped unchanged, by convention in a folder
     `thirdparty`. fylr does not load them; the plugin loads them itself when needed with the
-    pattern in loading-dependencies.md.
+    pattern in loading-dependencies.md. Check the library's format first (UMD/IIFE, ES module,
+    CommonJS); ES modules, workers and `.wasm` follow es-modules-workers-wasm.md.
+- A library with bare imports or only CommonJS needs a vendored bundle or another library: ask the
+  developer, do not bundle unasked.
 - Document origin, version and license of every library in `thirdparty`.
 
 ## Process
@@ -61,7 +65,9 @@ description: Use when adding or changing code that runs in the fylr web frontend
 - **Order between plugins:** if the code needs another plugin's code, declare it in
   `plugin.dependencies`. Without a dependency the order is not a contract: it changed in 6.35.1
   (manifest page, `dependencies`).
-- **JavaScript runs as written:** no `import` or `require`, no syntax that needs a transpiler.
+- **JavaScript runs as written:** plugin code is a classic script: no static `import`/`export`, no
+  `require`, no syntax that needs a transpiler. Dynamic `import(url)` of a shipped ES module is
+  allowed (es-modules-workers-wasm.md); CoffeeScript 1.x needs it as embedded JavaScript.
 - **Class pitfalls:** CoffeeScript 1.x classes are functions. A JavaScript class can extend one,
   not the other way round: a CoffeeScript class extending a JavaScript class fails with
   `Class constructor … cannot be invoked without 'new'`. In JavaScript classes `this` exists only

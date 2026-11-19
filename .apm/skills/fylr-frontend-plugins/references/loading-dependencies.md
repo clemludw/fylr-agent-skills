@@ -3,8 +3,14 @@
 For libraries shipped via `webfrontend.install` (usually in `thirdparty/`). fylr does not load
 them; the plugin loads them when it needs them. This pattern is not in the fylr docs.
 
+It covers classic scripts (UMD or IIFE) that set a global. Check the library's format first:
+for ES modules, CommonJS, web workers and WebAssembly see
+[es-modules-workers-wasm.md](es-modules-workers-wasm.md).
+
 ## Rules
 
+- **Same origin:** ship every file in the plugin (`thirdparty/`); do not load libraries, workers
+  or `.wasm` files from a CDN.
 - **Base URL:** `ez5.pluginManager.getPlugin("<plugin-name>").getBareBaseURL() + "thirdparty/<library>"`.
   `<plugin-name>` is `plugin.name` from `manifest.yml`; never guess it.
 - **Load:** scripts with `CUI.loadScript(url)`, stylesheets with

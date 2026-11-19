@@ -28,5 +28,8 @@ A new version of a generated reference (ez5, golib) is at least a minor release.
   `plugin.dependencies`, with fylr-plugin-commons-library as the existing base for custom data
   types (`fylr-plugin-design`, `fylr-spec-questions`, `fylr-custom-data-types`), and the
   `zip_aliases` pitfall when a repository is renamed (`fylr-build-release`).
+- Frontend libraries that ship ES modules, CommonJS, web workers or WebAssembly: format check,
+  dynamic `import()`, vendored bundles with consent, same-origin workers and `.wasm`
+  (`fylr-frontend-plugins`, new error patterns in `fylr-debugging`).
 - Reference generators for ez5 and golib under `scripts/` (not shipped).
 - Checks under `scripts/check/`: structure, links and install test.
